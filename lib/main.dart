@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/config/themes/dark/dark_theme.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'core/services/services_locator.dart';
 import 'core/config/localization/strings/app_strings.dart';
+import 'generated/l10n.dart';
 import 'movies/presentation/screens/movies_screen.dart';
 
 void main() {
@@ -13,14 +14,25 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppStrings.appName,
+      locale: const Locale("en"),
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Colors.grey.shade900
+        scaffoldBackgroundColor: Colors.grey.shade900,
+        appBarTheme: const AppBarTheme().copyWith(
+          centerTitle: true,
+          color: Colors.transparent
+        )
       ),
       home: const MoviesScreen(),
     );

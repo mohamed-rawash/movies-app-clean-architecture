@@ -9,7 +9,7 @@ import 'package:movies_app/movies/presentation/controllers/movies_state.dart';
 import 'package:movies_app/movies/presentation/screens/movie_detail_screen.dart';
 
 import '../../../core/network/api_constance.dart';
-import '../../../core/config/localization/strings/app_strings.dart';
+import '../../../generated/l10n.dart';
 
 class NowPlayingComponent extends StatelessWidget {
   const NowPlayingComponent({super.key});
@@ -19,6 +19,9 @@ class NowPlayingComponent extends StatelessWidget {
     return BlocBuilder<MoviesBloc, MoviesState>(
       buildWhen: (prev, current) => prev.nowPlayingState != current.nowPlayingState,
       builder: (context, state) {
+        print("*** " * 10);
+        print(state.nowPlayingState);
+        print("*** " * 10);
         switch(state.nowPlayingState) {
           case RequestState.loading:
             return const SizedBox(
@@ -86,7 +89,7 @@ class NowPlayingComponent extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 4.0),
                                       Text(
-                                        AppStrings.nowPlaying.toUpperCase(),
+                                        S.of(context).now_playing,
                                         style: const TextStyle(
                                           fontSize: 16.0,
                                         ),
