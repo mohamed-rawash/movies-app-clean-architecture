@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movies_app/movies/presentation/controllers/movies_bloc.dart';
-import 'package:movies_app/movies/presentation/controllers/movies_event.dart';
 import 'package:movies_app/movies/presentation/screens/movie_popular_screen.dart';
+import 'package:movies_app/tvs/presentation/components/on_the_air_component.dart';
+import 'package:movies_app/tvs/presentation/components/popular_tvs_component.dart';
+import 'package:movies_app/tvs/presentation/components/top_rated_tv_component.dart';
+import 'package:movies_app/tvs/presentation/controllers/tvs_bloc.dart';
 
 import '../../../core/services/services_locator.dart';
 import '../../../generated/l10n.dart';
-import '../components/now_playing_component.dart';
-import '../components/popular_component.dart';
-import '../components/top_rated_component.dart';
 
-class MoviesScreen extends StatelessWidget {
-  const MoviesScreen({Key? key}) : super(key: key);
+
+class TvScreen extends StatelessWidget {
+  const TvScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     print("build");
     return BlocProvider(
-      create: (BuildContext context) => sl<MoviesBloc>()
-        ..add(GetNowPlayingMoviesEvent())
-        ..add(GetPopularMoviesEvent())
-        ..add(GetTopRatedMoviesEvent()),
+      create: (BuildContext context) => sl<TvsBloc>()
+        ..add(GetOnAirTvsEvent())
+        ..add(GetPopularTvsEvent())
+        ..add(GetTopRatedTvsEvent()),
       child: Scaffold(
         body: SingleChildScrollView(
           key: const Key('movieScrollView'),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const NowPlayingComponent(),
+              const OnTheAirComponent(),
               Container(
                 margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
                 child: Row(
@@ -62,7 +62,7 @@ class MoviesScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const PopularComponent(),
+              const PopularTvComponent(),
               Container(
                 margin: const EdgeInsets.fromLTRB(
                   16.0,
@@ -101,7 +101,7 @@ class MoviesScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const TopRatedComponent(),
+              const TopRatedTvComponent(),
               const SizedBox(height: 50.0),
             ],
           ),

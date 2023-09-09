@@ -119,6 +119,16 @@ class S {
       args: [],
     );
   }
+
+  /// `On The Air`
+  String get on_air {
+    return Intl.message(
+      'On The Air',
+      name: 'on_air',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
