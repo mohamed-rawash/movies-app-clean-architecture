@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movies_app/tvs/data/repository/tv_repository.dart';
+import 'package:movies_app/views/splash_screen.dart';
 
 import 'core/services/services_locator.dart';
 import 'core/config/localization/strings/app_strings.dart';
 import 'generated/l10n.dart';
-import 'movies/presentation/screens/movies_screen.dart';
-import 'tvs/presentation/screens/tv_Screen.dart';
 
 void main() {
   ServicesLocator().init();
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
           color: Colors.transparent
         )
       ),
-      home: const TvScreen(),
+      home: const SplashScreen(),
     );
   }
 }
