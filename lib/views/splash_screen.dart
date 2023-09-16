@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movies_app/movies/presentation/screens/movies_screen.dart';
+import 'package:movies_app/views/home_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -26,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
       const Duration(seconds: 4),
       () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const MoviesScreen()),
+        MaterialPageRoute(builder: (context) => const HomeView()),
       ),
     );
     super.initState();
